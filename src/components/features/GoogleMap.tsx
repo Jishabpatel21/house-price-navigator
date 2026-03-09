@@ -117,9 +117,15 @@ const GoogleMap = () => {
 
     // Add Google Maps script if not already loaded
     if (!window.google || !window.google.maps) {
+      const googleApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '';
+      if (!googleApiKey) {
+        console.error('Google Maps API key not found in environment variables');
+        return;
+      }
+      
       const script = document.createElement("script");
       script.src = 
-        "https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap";
+        `https://maps.googleapis.com/maps/api/js?key=${googleApiKey}&callback=initMap`;
       script.defer = true;
       script.async = true;
       
