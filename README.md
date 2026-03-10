@@ -190,8 +190,6 @@ The built files will be in the `dist/` directory, ready to be deployed to any st
 - **Vercel** - Connect your GitHub repository for automatic deployments
 - **Netlify** - Drag and drop the `dist` folder or connect via Git
 - **GitHub Pages** - Use GitHub Actions for automated deployment
-- **AWS S3** - Upload the `dist` folder to an S3 bucket
-- **Any static hosting service** - Upload the contents of the `dist` folder
 
 ## License
 
