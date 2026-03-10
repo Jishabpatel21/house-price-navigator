@@ -193,10 +193,6 @@ The built files will be in the `dist/` directory, ready to be deployed to any st
 - **AWS S3** - Upload the `dist` folder to an S3 bucket
 - **Any static hosting service** - Upload the contents of the `dist` folder
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
 ## License
 
 This project is open source and available under the MIT License.
