@@ -50,8 +50,8 @@ This project is built with modern web technologies:
 
 1. Clone the repository:
 ```sh
-git clone <YOUR_GIT_URL>
-cd <YOUR_PROJECT_NAME>
+git clone https://github.com/yourusername/house-price-navigator.git
+cd house-price-navigator
 ```
 
 2. Install dependencies:
@@ -59,7 +59,26 @@ cd <YOUR_PROJECT_NAME>
 npm install
 ```
 
-3. Start the development server:
+3. Set up environment variables:
+
+Create a `.env` file in the root directory:
+```sh
+cp .env.example .env
+```
+
+Then add your API keys to the `.env` file:
+```env
+VITE_MAPBOX_ACCESS_TOKEN=your_mapbox_token_here
+VITE_GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
+```
+
+**Required API Keys:**
+- **Mapbox Access Token**: Get yours at [https://account.mapbox.com/](https://account.mapbox.com/)
+- **Google Maps API Key**: Get yours at [https://console.cloud.google.com/google/maps-apis/](https://console.cloud.google.com/google/maps-apis/)
+
+⚠️ **Important**: Without these API keys, the map features will not function properly.
+
+4. Start the development server:
 ```sh
 npm run dev
 ```
@@ -91,6 +110,69 @@ The application will be available at `http://localhost:5173`
 │   └── data/          # Static data files
 ├── public/            # Static assets
 └── index.html         # HTML entry point
+```
+
+## Environment Variables
+
+This project requires the following environment variables:
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `VITE_MAPBOX_ACCESS_TOKEN` | Mapbox API token for map features | Yes |
+| `VITE_GOOGLE_MAPS_API_KEY` | Google Maps API key for location services | Yes |
+
+### Getting API Keys
+
+**Mapbox Access Token:**
+1. Sign up at [https://account.mapbox.com/](https://account.mapbox.com/)
+2. Navigate to your account dashboard
+3. Copy your default public token or create a new one
+
+**Google Maps API Key:**
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select an existing one
+3. Enable the following APIs:
+   - Maps JavaScript API
+   - Places API
+   - Geocoding API
+4. Create credentials (API Key)
+5. Restrict the key to your domain for production use
+
+## Troubleshooting
+
+### Map Features Not Loading
+
+**Problem**: Google Maps or Mapbox features are not displaying.
+
+**Solution**:
+- Verify that you've created a `.env` file in the root directory
+- Ensure your API keys are correctly set in the `.env` file
+- Check that the `.env` file is not in `.gitignore` (for local development)
+- Restart the development server after adding environment variables
+- Check browser console for API key errors
+
+### Environment Variables Not Working
+
+**Problem**: Environment variables are not being detected.
+
+**Solution**:
+- Make sure all environment variables start with `VITE_` prefix
+- Restart the development server (`npm run dev`) after making changes to `.env`
+- Clear browser cache and reload the page
+
+### Build Errors
+
+**Problem**: Build fails with missing dependencies or TypeScript errors.
+
+**Solution**:
+```sh
+# Clear node_modules and reinstall
+rm -rf node_modules
+npm install
+
+# Clear build cache
+rm -rf dist
+npm run build
 ```
 
 ## Deployment
